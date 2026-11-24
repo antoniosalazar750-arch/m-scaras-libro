@@ -6,7 +6,7 @@ window.APP = {
     wa: "",
     endpoint: "",
     registro: false,
-    sitio: "muestras-apps.vercel.app/mascaras",
+    sitio: "m-scaras-libro.vercel.app",
     firmado: "#",
     amz: "", ml: "", editorial: ""
   },
