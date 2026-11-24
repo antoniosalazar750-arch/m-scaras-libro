@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ====== EDITA SOLO ESTAS LÍNEAS DEL ENCABEZADO (título y vista previa al compartir) ====== -->
+<title>¿Qué máscara llevas puesta?</title>
+<meta name="description" content="Un test de 3 minutos basado en el libro Máscaras, de Edgar Dennis.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="¿Qué máscara llevas puesta?">
+<meta property="og:description" content="Test de 3 minutos del libro Máscaras, de Edgar Dennis.">
+<meta property="og:image" content="https://muestras-apps.vercel.app/mascaras/libro.jpg">
+<!-- ====== FIN DE LO EDITABLE ====== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#e9875a">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<meta name="apple-mobile-web-app-title" content="Test del libro">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* VOICE: sereno, luminoso y esperanzador; fe práctica, pocas palabras, mucho aire.
+   IDEA: la portada del libro — una puerta abierta sobre una nube; "el primer paso de regreso a casa siempre está disponible".
+   PICTURE: cielo turquesa con una nube y una puerta que se abre con cada respuesta, hasta dejar pasar la luz.
+   COLOUR and TYPE: turquesa de la portada dominante, blanco de nube, azul petróleo para texto y botones; Newsreader ligera + Inter.
+   LAYOUT: una columna tipo app; cielo arriba, contenido abajo; tarjeta 9:16 en el resultado. */
+:root{color-scheme:light;--g1:#2f9fbd;--g2:#6cc3d9;--g3:#bfe7f0;--bg:#f3fafc;--sky1:#3fa9c4;--sky2:#8fd3e3;--ink:#0d3542;--mute:#4d6f79;--deep:#0f4c5c;--panel:#ffffff;--line:#cfe6ec;--soft:#e6f5f9}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+.app{max-width:640px;margin:0 auto;min-height:100vh}
+.stage{position:relative;height:clamp(230px,40vh,330px);overflow:hidden;background:var(--sky1)}
+.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.top{position:absolute;left:20px;right:20px;top:16px;display:flex;justify-content:space-between;gap:12px;color:#fff;font-size:13px;z-index:2;text-shadow:0 1px 2px rgba(0,60,80,.25)}
+.bar{position:absolute;left:20px;right:20px;top:42px;height:3px;background:rgba(255,255,255,.35);border-radius:3px;overflow:hidden;z-index:2}
+.bar i{display:block;height:100%;width:0;background:#fff;transition:width .5s}
+main{padding:26px 20px 56px}
+h1,h2{font-family:Newsreader,Georgia,serif;font-weight:400;line-height:1.08;text-wrap:balance;margin:0 0 12px;letter-spacing:-.015em}
+h1{font-size:clamp(38px,10vw,50px)}h2{font-size:clamp(27px,6.6vw,34px)}
+h3{font-size:17px;margin:32px 0 10px;font-weight:600}
+p{margin:0 0 14px}.mute{color:var(--mute)}
+.kicker{font-size:14px;color:var(--sky1);margin-bottom:8px;font-weight:600}
+.banner{background:var(--deep);color:#fff;border-radius:14px;padding:12px 14px;margin-bottom:18px;font-size:15px}
+.verse{border-left:2px solid var(--sky1);padding:2px 0 2px 16px;margin:20px 0;font-family:Newsreader,Georgia,serif;font-style:italic;font-size:20px;line-height:1.38}
+.verse small{display:block;font:13px Inter,sans-serif;font-style:normal;color:var(--mute);margin-top:6px}
+.quote{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;margin:18px 0}
+.quote q{display:block;font-family:Newsreader,Georgia,serif;font-size:22px;line-height:1.3;quotes:"“" "”"}
+.quote small{display:block;color:var(--mute);font-size:13px;margin-top:10px}
+.btn{appearance:none;border:0;border-radius:14px;background:var(--deep);color:#fff;font:600 17px Inter,sans-serif;min-height:54px;padding:0 22px;cursor:pointer;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center;line-height:1.25}
+.btn.ghost{background:var(--panel);color:var(--ink);border:1.5px solid var(--line)}
+.btn.small{min-height:48px;font-size:15px}
+.btn[disabled]{opacity:.5;cursor:default}
+.btn:focus-visible,.opt:focus-visible,input:focus-visible,textarea:focus-visible,.day:focus-within,a:focus-visible{outline:3px solid var(--sky1);outline-offset:2px}
+.stack{display:grid;gap:10px;margin-top:16px}
+label.f{display:block;font-size:14px;color:var(--mute);margin:16px 0 6px}
+input[type=text],input[type=tel],textarea{width:100%;border-radius:12px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);font:16px/1.5 Inter,sans-serif;padding:13px 14px}
+textarea{min-height:110px}
+.ask{font-size:14px;color:var(--mute);margin:18px 0 0}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opt{appearance:none;text-align:left;border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px;padding:14px 16px;font:500 16px/1.4 Inter,sans-serif;min-height:56px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:border-color .2s,background .2s}
+.opt i{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);position:relative}
+.opt.sel{border-color:var(--deep);background:var(--soft)}.opt.sel i{border-color:var(--deep)}.opt.sel i::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--deep)}
+.opt:hover{border-color:var(--sky1)}
+.back{background:none;border:0;color:var(--mute);font:500 15px Inter,sans-serif;padding:12px 0;cursor:pointer;min-height:44px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px}.box span{display:block;font-size:13px;color:var(--mute)}.box strong{font-size:16px;font-weight:600}
+.meters{display:grid;gap:10px;margin:16px 0}
+.m{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr) 3em;gap:10px;align-items:center;font-size:14px}
+.m .t{height:8px;background:var(--soft);border-radius:8px;overflow:hidden}.m .t i{display:block;height:100%;background:var(--sky2);border-radius:8px}
+.m.top1 .t i{background:var(--deep)}.m b{text-align:right;font-weight:600}
+.chap{display:flex;gap:14px;align-items:center;background:var(--soft);border-radius:16px;padding:14px 16px;margin:18px 0}
+.chap .n{flex:none;width:52px;height:52px;border-radius:12px;background:var(--panel);display:grid;place-items:center;font-family:Newsreader,Georgia,serif;font-size:28px;color:var(--deep)}
+.chap span{display:block;font-size:13px;color:var(--mute)}.chap strong{font-weight:600}
+audio{width:100%;margin:6px 0 4px}
+.days{display:grid;gap:8px}
+.day{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.day input{width:22px;height:22px;accent-color:var(--deep);margin-top:2px;flex:none}
+.day b{display:block;font-size:15px;font-weight:600}.day span{display:block;font-size:14px;color:var(--mute)}
+.day.done b{text-decoration:line-through;opacity:.6}
+.story{width:min(100%,330px);aspect-ratio:9/16;margin:8px auto 10px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(180deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%);display:flex;flex-direction:column;justify-content:space-between;padding:26px 22px;color:#fff;box-shadow:0 12px 30px rgba(15,76,92,.18)}
+.story svg{position:absolute;left:0;right:0;bottom:44px;width:100%;height:58%}
+.story>div{position:relative}
+.story .lab{font-size:12px}
+.story .big{font-family:Newsreader,Georgia,serif;font-size:38px;line-height:1.02;margin:8px 0 14px}
+.story .born{font-size:13px}.story .born b{display:block;font-family:Newsreader,Georgia,serif;font-size:22px;font-weight:500;line-height:1.15}
+.story .ft{font-size:11.5px;color:var(--deep);border-top:1px solid rgba(15,76,92,.25);padding-top:10px}
+#imgout img{display:block;width:min(100%,280px);margin:12px auto 0;border-radius:14px;box-shadow:0 8px 20px rgba(15,76,92,.2)}
+.lead{background:var(--panel);border:1.5px solid var(--sky1);border-radius:20px;padding:22px 20px;margin-top:30px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--mute);margin-top:14px;cursor:pointer}
+.check input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--deep)}
+.err{color:#b3261e;font-size:14px;min-height:20px;margin-top:6px}
+.book{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:34px}
+.book img{display:block;width:100%;height:auto;background:#eeeeee}
+.book .in{padding:22px 20px 24px}
+.book .hook{font-family:Newsreader,Georgia,serif;font-size:24px;line-height:1.22;margin:0 0 12px}
+.book .sub{color:var(--mute);font-size:15px;margin-bottom:12px}
+.actsrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 18px}
+.actsrow div{border-top:2px solid var(--sky1);padding-top:8px;font-size:13px;color:var(--mute)}.actsrow b{display:block;color:var(--ink);font-size:14px;font-weight:600}
+.links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.walink{display:block;text-align:center;margin-top:12px;font-size:15px;color:var(--deep);font-weight:500}
+.event{display:flex;gap:14px;align-items:center;background:var(--soft);border-radius:16px;padding:16px;margin-top:18px}
+.event .d{flex:none;width:58px;text-align:center;border-radius:12px;background:var(--panel);padding:8px 0;color:var(--deep)}
+.event .d b{display:block;font-family:Newsreader,Georgia,serif;font-size:30px;line-height:1;font-weight:500}
+.event .d span{font-size:12px}
+.final{text-align:center;margin:36px 4px 0}
+.final q{font-family:Newsreader,Georgia,serif;font-style:italic;font-size:22px;line-height:1.35;quotes:"“" "”"}
+.final small{display:block;color:var(--mute);font-size:13px;margin-top:8px}
+.author{margin-top:34px;border-radius:20px;padding:24px 20px;background:var(--deep);color:#fff}
+.author h2{color:#fff}.author .kicker{color:var(--sky2)}
+.author ul{margin:8px 0 18px;padding-left:20px}.author li{margin-bottom:6px}
+.author .btn{background:#fff;color:var(--deep)}
+.toast{font-size:14px;color:var(--deep);min-height:20px;margin-top:8px;overflow-wrap:anywhere}
+.note{font-size:13px;color:var(--mute);margin-top:28px}
+.fade{animation:f .4s ease both}@keyframes f{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#panel,#light{transition:all .7s ease}
+@media(prefers-reduced-motion:reduce){.fade{animation:none}#panel,#light,.bar i{transition:none}}
+@media(max-width:400px){.m{grid-template-columns:minmax(0,7.4em) minmax(0,1fr) 2.8em}.actsrow{grid-template-columns:1fr}.links{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="stage" aria-hidden="true">
+    <div class="top"><span id="lbl"></span><span id="cnt"></span></div>
+    <div class="bar"><i id="prog"></i></div>
+    <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop id="k0" offset="0" stop-color="#2f9fbd"/><stop id="k1" offset=".6" stop-color="#6cc3d9"/><stop id="k2" offset="1" stop-color="#bfe7f0"/></linearGradient>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff8e6"/><stop offset=".5" stop-color="#fff3d1" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        <linearGradient id="inside" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="1" stop-color="#f6e3b4"/></linearGradient>
+        <linearGradient id="door" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe9ec"/></linearGradient>
+        <filter id="soft" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="3"/></filter>
+      </defs>
+      <rect width="400" height="300" fill="url(#sky)"/>
+      <circle id="light" cx="200" cy="140" r="40" fill="url(#glow)" opacity="0"/>
+      <rect x="168" y="70" width="64" height="134" fill="url(#inside)"/>
+      <polygon id="panel" points="168,70 232,70 232,204 168,204" fill="url(#door)" stroke="#c9d9de" stroke-width="1"/>
+      <rect x="164" y="66" width="72" height="140" fill="none" stroke="#ffffff" stroke-width="6"/>
+      <rect x="164" y="66" width="72" height="140" fill="none" stroke="#c9d9de" stroke-width="1"/>
+      <g filter="url(#soft)" fill="#ffffff"><ellipse cx="200" cy="216" rx="110" ry="22"/><ellipse cx="150" cy="204" rx="46" ry="26"/><ellipse cx="205" cy="198" rx="52" ry="30"/><ellipse cx="258" cy="208" rx="44" ry="22"/><ellipse cx="110" cy="220" rx="40" ry="14"/><ellipse cx="300" cy="222" rx="42" ry="13"/></g>
+      <g fill="#ffffff" opacity=".55" filter="url(#soft)"><ellipse cx="60" cy="70" rx="38" ry="9"/><ellipse cx="345" cy="104" rx="30" ry="7"/></g>
+    </svg>
+  </div>
+  <main id="view"><p class="mute">Cargando…</p></main>
+</div>
+<script src="contenido.js"></script>
+<script>
+{
+const A=window.APP,C=A.config,B=A.libro,M=A.resultados||A.muertes,R=A.reactivos,KEYS=Object.keys(M);
+const TX=Object.assign({empezar:"Empezar",notaIntro:"Un ejercicio de reflexión basado en el libro. No es un diagnóstico.",resultado:"lo que más se refleja en ti es",caja1:"Hoy",caja2:"Hacia dónde vas",tarjeta:"Mi resultado",tarjeta2:"Lo que estoy construyendo",ritualTitulo:"Tus 7 días",nota:"¿Qué te llevas de este test?",firmado:"Quiero mi ejemplar firmado y dedicado",pieLegal:"Ejercicio de reflexión personal; no sustituye acompañamiento profesional."},A.textos||{});
+const ET=Object.assign({inicio:"",preguntas:"",resultado:"Tu resultado",ritual:"Tu práctica"},A.etiquetas||{});
+const TM=Object.assign({cielo1:"#2f9fbd",cielo2:"#6cc3d9",cielo3:"#bfe7f0",fuerte:"#0f4c5c",acento:"#3fa9c4",suave:"#8fd3e3",texto:"#0d3542",fondo:"#f3fafc"},A.tema||{});
+{const rs=document.documentElement.style;rs.setProperty("--g1",TM.cielo1);rs.setProperty("--g2",TM.cielo2);rs.setProperty("--g3",TM.cielo3);rs.setProperty("--deep",TM.fuerte);rs.setProperty("--sky1",TM.acento);rs.setProperty("--sky2",TM.suave);rs.setProperty("--ink",TM.texto);rs.setProperty("--bg",TM.fondo);rs.setProperty("--mute",TM.texto+"b8");rs.setProperty("--line",TM.suave+"99");rs.setProperty("--soft",TM.suave+"40");
+ [["k0",TM.cielo1],["k1",TM.cielo2],["k2",TM.cielo3]].forEach(([i,c])=>{const e=document.getElementById(i);if(e)e.setAttribute("stop-color",c)});
+ document.querySelector(".stage").style.background=TM.cielo1;
+ if(A.escena){const sg=document.querySelector(".stage");sg.style.background=`linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,0) 30%),url("${A.escena}") center 40%/cover no-repeat ${TM.cielo1}`;const sv=sg.querySelector("svg");if(sv)sv.style.display="none";
+ const st2=document.createElement("style");st2.textContent=`.story svg{display:none}.story{background:linear-gradient(180deg,${TM.fuerte}e6 0%,${TM.fuerte}66 45%,${TM.fuerte}e6 100%),url("${A.escena}") center/cover no-repeat ${TM.fuerte}!important}.story .ft{color:#fff!important;border-top-color:rgba(255,255,255,.35)!important}`;document.head.appendChild(st2);}}
+const MUESTRA=A.muestra?`<div class="banner" style="background:${TM.fuerte}">${String(A.muestra).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}</div>`:"";
+const cap1=t=>t.charAt(0).toUpperCase()+t.slice(1);
+const fill=(t,m)=>String(t).replace(/\{(\w+)\}/g,(_,k)=>({nombre:m.nombre,nombreMin:m.nombre.charAt(0).toLowerCase()+m.nombre.slice(1),nace:m.nace,naceMin:m.nace.charAt(0).toLowerCase()+m.nace.slice(1),cap:m.cap,capTitulo:m.capTitulo,tecnica:m.tecnica.titulo,paso1:m.tecnica.pasos[0],paso2:m.tecnica.pasos[1],paso3:m.tecnica.pasos[2]}[k]??""));
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const view=$("view");
+const wa=msg=>C.wa?`https://wa.me/${C.wa}?text=${encodeURIComponent(msg)}`:"#";
+let qs;try{qs=new URLSearchParams(location.search)}catch(e){qs=new URLSearchParams("")}
+const FIL=location.hash==="#fil"||qs.get("modo")==="fil";
+const SRC=FIL?"fil":(qs.get("utm_source")||"directo");
+let SID="";try{SID=sessionStorage.getItem("qtm-sid")||""}catch(e){}
+if(!SID){SID=Math.random().toString(36).slice(2,10);try{sessionStorage.setItem("qtm-sid",SID)}catch(e){}}
+function track(ev,extra){
+ if(!C.endpoint)return;
+ const body=JSON.stringify(Object.assign({ev,sid:SID,src:SRC},extra||{}));
+ try{if(navigator.sendBeacon&&navigator.sendBeacon(C.endpoint,new Blob([body],{type:"text/plain;charset=utf-8"})))return}catch(e){}
+ try{fetch(C.endpoint,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body})}catch(e){}
+}
+const KEY="app-"+(C.sitio||"libro");
+const fresh=()=>({i:-1,a:[],done:[],note:"",name:"",lead:false,started:false});
+let st=fresh();
+try{const s=JSON.parse(localStorage.getItem(KEY)||"null");if(s&&Array.isArray(s.a))st=Object.assign(fresh(),s)}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+function door(p){
+ const o=Math.max(0,Math.min(1,p)),w=64*(1-.82*o),d=12*o,x=168;
+ $("panel").setAttribute("points",`${x},70 ${x+w},${70+d} ${x+w},${204-d} ${x},204`);
+ $("light").setAttribute("r",40+90*o);$("light").setAttribute("opacity",o>0?.35+.65*o:0);
+ $("prog").style.width=(o*100)+"%";
+}
+function score(){
+ const s={},mx={};KEYS.forEach(k=>{s[k]=0;mx[k]=0});
+ R.forEach(([k],i)=>{mx[k]+=2;s[k]+=(+st.a[i]||0)});
+ const pct={};KEYS.forEach(k=>pct[k]=mx[k]?Math.round(s[k]/mx[k]*100):0);
+ const order=KEYS.slice().sort((x,y)=>pct[y]-pct[x]);
+ return{pct,order};
+}
+function intro(){
+ door(0);$("lbl").textContent=ET.inicio;$("cnt").textContent="";
+ const resume=st.a.length>0&&st.i>=0;
+ view.innerHTML=`<div class="fade">
+  ${MUESTRA}${FIL?`<div class="banner">${esc((B.evento&&B.evento.bienvenida)||"Bienvenido a la presentación. Haz el test mientras empezamos.")}</div>`:""}
+  <div class="kicker">Del libro ${esc(B.titulo)}, de ${esc(B.autor)}</div>
+  <h1>${esc(A.intro.titulo)}</h1>
+  <p class="mute">${esc(A.intro.texto)}</p>
+  ${A.intro.verso&&A.intro.verso.t?`<div class="verse">${esc(A.intro.verso.t)}<small>${esc(A.intro.verso.r)}</small></div>`:""}
+  <label class="f" for="nm">¿Cómo te llamas? (opcional)</label>
+  <input type="text" id="nm" autocomplete="given-name" maxlength="40" value="${esc(st.name)}" placeholder="Tu nombre">
+  <div class="stack"><button class="btn" id="go">${resume?"Continuar donde me quedé":esc(TX.empezar)}</button>
+  ${resume?'<button class="btn ghost small" id="reset">Empezar de nuevo</button>':""}</div>
+  <p class="note">${esc(TX.notaIntro)}</p></div>`;
+ const keep=()=>{st.name=$("nm").value.trim();save()};
+ $("nm").oninput=keep;
+ const begin=()=>{if(!st.started){st.started=true;track("inicio",{nombre:st.name})}save();st.i>=R.length?result():ask()};
+ $("go").onclick=()=>{keep();if(!resume){const n=st.name;st=fresh();st.name=n;st.i=0}begin()};
+ if(resume)$("reset").onclick=()=>{keep();const n=st.name;st=fresh();st.name=n;st.i=0;begin()};
+ window.scrollTo({top:0});
+}
+function ask(){
+ const i=st.i,[,frase]=R[i];door(i/R.length);$("lbl").textContent=ET.preguntas;$("cnt").textContent=`${i+1} de ${R.length}`;
+ view.innerHTML=`<div class="fade"><div class="kicker">Frase ${i+1}</div><h2>${esc(frase)}</h2>
+  <p class="ask">¿Qué tanto te describe?</p>
+  <div class="opts">${A.escala.map((t,v)=>`<button class="opt${st.a[i]===v?" sel":""}" data-v="${v}"><i></i>${esc(t)}</button>`).join("")}</div>
+  <button class="back" id="bk">${i>0?"← Anterior":"← Inicio"}</button></div>`;
+ view.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+  view.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel"));
+  st.a[i]=+b.dataset.v;b.classList.add("sel");st.i=i+1;save();door(st.i/R.length);
+  setTimeout(()=>{if(st.i>=R.length){const {order,pct}=score();track("resultado",{nombre:st.name,res:M[order[0]].nombre,det:KEYS.map(k=>M[k].nombre+" "+pct[k]+"%").join(" · ")});result()}else ask()},240)});
+ $("bk").onclick=()=>{if(i>0){st.i=i-1;save();ask()}else intro()};
+ window.scrollTo({top:0});
+}
+function days(m){
+ const def=[["Nómbralo","Escribe en una frase: {nombre}. ¿Cómo se ve en tu vida hoy?"],["{tecnica} · 1","{paso1}"],["{tecnica} · 2","{paso2}"],["{tecnica} · 3","{paso3}"],["Elige hacia dónde vas","Describe en tres líneas a la persona que quieres ser: {naceMin}."],["Lee el capítulo {cap}","“{capTitulo}”. Subraya la frase que más te confronte."],["Comparte el fruto","Cuéntale a alguien lo que aprendiste esta semana."]];
+ return (A.ritual||def).map(([t,d])=>[fill(t,m),fill(d,m)]);
+}
+function result(){
+ door(1);$("lbl").textContent=ET.resultado;$("cnt").textContent="Tu resultado";
+ const {pct,order}=score(),k=order[0],m=M[k],m2=M[order[1]],nm=esc(st.name),weak=pct[k]<34;
+ const share=`Hice el test “${A.intro.titulo}” del libro “${B.titulo}” de ${B.autor}. ${TX.tarjeta}: ${m.nombre}. ${TX.tarjeta2}: ${m.nace}. Hazlo tú: ${C.sitio}`;
+ const signed=`Hola ${B.autorCorto}, hice el test “${A.intro.titulo}” y me salió: ${m.nombre}. Quiero un ejemplar firmado de “${B.titulo}”${st.name?`, con dedicatoria para ${st.name}`:""}.`;
+ const D=days(m);
+ view.innerHTML=`<div class="fade">
+  <div class="kicker">${weak?"Ninguna apareció con fuerza. La que más vale la pena revisar es":(nm?nm+", "+esc(TX.resultado):cap1(esc(TX.resultado)))}</div>
+  <h1>${esc(m.nombre)}</h1>
+  <div class="two"><div class="box"><span>${esc(TX.caja1)}</span><strong>${esc(m.define)}</strong></div><div class="box"><span>${esc(TX.caja2)}</span><strong>${esc(m.nace)}</strong></div></div>
+  <p>${esc(m.reflexion)}</p>
+  ${m.audio?`<h3>Escucha a ${esc(B.autorCorto)}</h3><audio controls preload="none" src="${esc(m.audio)}"></audio>`:""}
+  ${m.cita?`<div class="quote"><q>${esc(m.cita)}</q><small>${esc(B.autor)}, ${esc(B.titulo)}, capítulo ${m.cap}</small></div>`:""}
+  ${m.verso&&m.verso.t?`<div class="verse">${esc(m.verso.t)}<small>${esc(m.verso.r)}</small></div>`:""}
+  <div class="chap"><div class="n">${m.cap}</div><div><span>Tu capítulo para hoy</span><strong>${esc(m.capTitulo)}</strong></div></div>
+  <h3>Qué tanto te identificas con cada una</h3>
+  <div class="meters">${order.map((x,n)=>`<div class="m${n===0?" top1":""}"><span>${esc(M[x].nombre)}</span><div class="t"><i style="width:${pct[x]}%"></i></div><b>${pct[x]}%</b></div>`).join("")}</div>
+  ${pct[order[1]]>=50?`<p class="mute">También aparece con fuerza <strong>${esc(m2.nombre.toLowerCase())}</strong> (capítulo ${m2.cap}). Muchas veces van juntas: trabaja primero la principal.</p>`:""}
+
+  <h3>Compártelo en tus historias</h3>
+  <div class="story" role="img" aria-label="Vista previa de tu tarjeta para historias">
+   <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><filter id="sf" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="2.5"/></filter><linearGradient id="si" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="1" stop-color="#f6e3b4"/></linearGradient></defs><rect x="126" y="40" width="48" height="104" fill="url(#si)"/><polygon points="126,40 140,48 140,136 126,144" fill="#fff" stroke="#c9d9de"/><rect x="123" y="37" width="54" height="110" fill="none" stroke="#fff" stroke-width="5"/><g filter="url(#sf)" fill="#fff"><ellipse cx="150" cy="156" rx="96" ry="18"/><ellipse cx="108" cy="146" rx="38" ry="22"/><ellipse cx="156" cy="140" rx="44" ry="24"/><ellipse cx="200" cy="150" rx="38" ry="18"/></g></svg>
+   <div><div class="lab">${nm?nm+" · ":""}${esc(TX.tarjeta)}</div><div class="big">${esc(m.nombre)}</div>
+   <div class="born">${esc(TX.tarjeta2)}<b>${esc(m.nace)}</b></div></div>
+   <div class="ft">Haz el test en ${esc(C.sitio)}<br>${esc(B.titulo)} · ${esc(B.autor)}</div>
+  </div>
+  <div class="stack"><button class="btn" id="dl">Guardar imagen para mis historias</button><button class="btn ghost small" id="cp">Copiar texto para compartir</button></div>
+  <div class="toast" id="toast" role="status"></div><div id="imgout"></div>
+
+  <div class="kicker" style="margin-top:34px">${esc(ET.ritual)}</div>
+  <h2>${esc(TX.ritualTitulo)}</h2>
+  <p class="mute">Basados en la técnica del capítulo ${m.cap}: ${esc(m.tecnica.titulo)}.</p>
+  <div class="days">${D.map(([t,d],n)=>`<label class="day${st.done[n]?" done":""}"><input type="checkbox" data-d="${n}"${st.done[n]?" checked":""}><div><b>Día ${n+1} · ${esc(t)}</b><span>${esc(d)}</span></div></label>`).join("")}</div>
+  <p class="mute" id="dc" style="margin-top:10px"></p>
+  <label class="f" for="note">${esc(TX.nota)}</label>
+  <textarea id="note" placeholder="Escríbelo con tus palabras. Se queda solo en este dispositivo.">${esc(st.note)}</textarea>
+
+  <div class="lead" id="lead"></div>
+
+  <div class="book">
+   <img onerror="this.remove()" src="${esc(B.portada)}" alt="Portada y contraportada del libro ${esc(B.titulo)}, de ${esc(B.autor)}" width="900" height="669">
+   <div class="in">
+    <div class="kicker">Este ejercicio nace del libro</div>
+    <p class="hook">${esc(B.gancho)}</p>
+    <div class="sub"><strong style="color:var(--ink)">${esc(B.titulo)}</strong>. ${esc(B.subtitulo)}. Por ${esc(B.autor)}${B.editorial?", "+esc(String(B.editorial).replace(/\.$/,"")):""}.</div>
+    ${B.actos&&B.actos.length?`<div class="actsrow">${B.actos.map(([a,b])=>`<div><b>${esc(a)}</b>${esc(b)}</div>`).join("")}</div>`:""}
+    ${FIL&&B.evento?`<p class="banner" style="margin:0 0 12px">${esc(B.evento.banner||"Estás en la presentación: al terminar, pide tu ejemplar firmado en la mesa.")}</p>`:""}
+    ${C.firmado?`<a class="btn" data-ev="clic_firmado" href="${esc(C.firmado)}" target="_blank" rel="noopener">${esc(TX.firmado)}</a>`:""}
+    ${C.wa?`<a class="walink" data-ev="clic_whatsapp" href="${wa(signed)}" target="_blank" rel="noopener">${C.firmado?"o pídelo":"Pídelo"} por WhatsApp con tu resultado →</a>`:""}
+    <div class="links">${[["clic_amazon","Amazon",C.amz],["clic_mercadolibre","Mercado Libre",C.ml],["clic_editorial","Editorial",C.editorial]].filter(x=>x[2]).map(([e,t,u])=>`<a class="btn ghost small" data-ev="${e}" href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`).join("")}</div>
+    ${B.evento?`<div class="event"><div class="d"><b>${esc(B.evento.dia)}</b><span>${esc(B.evento.mes)}</span></div><div><strong>${esc(B.evento.titulo)}</strong><div class="mute">${esc(B.evento.cuando)}</div></div></div>
+    <div class="stack"><a class="btn ghost small" data-ev="clic_fil" href="${wa(`Hola ${B.autorCorto}, quiero asistir a: ${B.evento.titulo}, de “${B.titulo}”.`)}" target="_blank" rel="noopener">Quiero ir a la presentación</a></div>`:""}
+   </div>
+  </div>
+
+  ${B.fraseFinal?`<div class="final"><q>${esc(B.fraseFinal.t)}</q><small>${esc(B.autor)} · ${esc(B.fraseFinal.r)}</small></div>`:""}
+
+  ${A.autores?`<div class="author">
+   <div class="kicker">${esc(A.autores.kicker||"¿Escribiste un libro?")}</div>
+   <h2>${esc(A.autores.titulo)}</h2>
+   <ul>${A.autores.puntos.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
+   <a class="btn" data-ev="clic_autor" href="${esc(A.autores.enlace||wa(`Hola ${B.autorCorto}, vi la app de “${B.titulo}”. Yo también tengo un libro y quiero una app así.`))}" target="_blank" rel="noopener">${esc(A.autores.boton||"Quiero una app para mi libro")}</a>
+  </div>`:""}
+
+  <div class="stack"><button class="btn ghost small" id="again">Volver a hacer el test</button></div>
+  <p class="note">${esc(TX.pieLegal)}</p>${A.credito?`<p class="note" style="text-align:center">${esc(A.credito.texto)} · <a href="${esc(A.credito.enlace)}" target="_blank" rel="noopener" style="color:var(--deep)">${esc(A.credito.link)}</a></p>`:""}</div>`;
+ const upd=()=>{const n=st.done.filter(Boolean).length;$("dc").textContent=n?`${n} de 7 días completados`:"Marca cada día cuando lo completes."};upd();
+ view.querySelectorAll(".day input").forEach(x=>x.onchange=()=>{st.done[+x.dataset.d]=x.checked;x.closest(".day").classList.toggle("done",x.checked);save();upd()});
+ $("note").oninput=e=>{st.note=e.target.value;save()};
+ view.querySelectorAll("a[data-ev]").forEach(a=>a.addEventListener("click",()=>track(a.dataset.ev,{nombre:st.name,res:m.nombre})));
+ $("cp").onclick=async()=>{try{await navigator.clipboard.writeText(share);$("toast").textContent="Copiado. Pégalo junto a tu imagen."}catch(e){$("toast").textContent=share}};
+ $("dl").onclick=()=>saveStory(m,share);
+ $("again").onclick=()=>{const n=st.name;st=fresh();st.name=n;st.i=0;st.started=true;save();track("inicio",{nombre:n});ask()};
+ leadForm(m);
+ window.scrollTo({top:0});
+}
+function leadForm(m){
+ const box=$("lead");
+ if(C.registro===false){box.remove();return}
+ if(st.lead){box.innerHTML=`<div class="kicker">Listo</div><h2>Te acompaño estos 7 días.</h2><p class="mute">${esc(B.autorCorto)} te escribirá por WhatsApp con el paso de cada día.</p>${C.comunidad?`<a class="btn ghost small" data-ev="clic_comunidad" href="${esc(C.comunidad)}" target="_blank" rel="noopener">Únete también a la comunidad</a>`:""}`;return}
+ box.innerHTML=`<div class="kicker">No lo hagas solo</div><h2>Recibe tu paso de cada día por WhatsApp</h2>
+  <p class="mute">Durante 7 días ${esc(B.autorCorto)} te acompaña con el paso que te toca, para que esto no se quede en un test.</p>
+  <form id="lf" novalidate>
+   <label class="f" for="ln">Tu nombre</label><input type="text" id="ln" autocomplete="name" maxlength="60" value="${esc(st.name)}">
+   <label class="f" for="lw">Tu WhatsApp (10 dígitos)</label><input type="tel" id="lw" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="Ej. 33 1234 5678">
+   <label class="check"><input type="checkbox" id="lc"><span>Acepto que ${esc(B.autor)} use mi nombre y WhatsApp solo para acompañarme en este camino y darme noticias del libro. Puedo darme de baja escribiendo BAJA.${C.privacidad?` <a href="${esc(C.privacidad)}" target="_blank" rel="noopener">Aviso de privacidad</a>.`:""}</span></label>
+   <div class="err" id="le" role="alert"></div>
+   <button class="btn" type="submit">Quiero que me acompañes</button>
+  </form>`;
+ $("lf").onsubmit=e=>{
+  e.preventDefault();
+  const n=$("ln").value.trim(),w=$("lw").value.replace(/\D/g,""),ok=$("lc").checked;
+  if(!n){$("le").textContent="Escribe tu nombre.";return}
+  if(w.length<10){$("le").textContent="Revisa tu número: deben ser al menos 10 dígitos.";return}
+  if(!ok){$("le").textContent="Necesitamos tu autorización para escribirte.";return}
+  st.name=st.name||n;
+  if(C.endpoint){track("registro",{nombre:n,wa:w,res:m.nombre,ok:true});st.lead=true;save();leadForm(m)}
+  else{st.lead=true;save();window.open(wa(`Hola ${B.autorCorto}, soy ${n}. Hice el test y me salió: ${m.nombre}. Quiero que me acompañes los 7 días.`),"_blank");leadForm(m)}
+ };
+}
+function wrap(ctx,text,x,y,maxW,lh){
+ const words=text.split(" ");let line="",yy=y;
+ for(const w of words){const t=line?line+" "+w:w;if(ctx.measureText(t).width>maxW&&line){ctx.fillText(line,x,yy);line=w;yy+=lh}else line=t}
+ if(line)ctx.fillText(line,x,yy);return yy+lh;
+}
+async function saveStory(m,share){
+ const out=$("imgout"),toast=$("toast");
+ try{await Promise.all([document.fonts.load("400 120px Newsreader"),document.fonts.load("500 40px Inter")])}catch(e){}
+ const W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;const x=cv.getContext("2d");
+ let escImg=null;if(A.escena){escImg=await new Promise(r=>{const im=new Image();im.onload=()=>r(im);im.onerror=()=>r(null);im.src=A.escena});}
+ if(escImg){const sc=Math.max(W/escImg.width,H/escImg.height),iw=escImg.width*sc,ih=escImg.height*sc;x.drawImage(escImg,(W-iw)/2,(H-ih)/2,iw,ih);
+  const ov=x.createLinearGradient(0,0,0,H);ov.addColorStop(0,TM.fuerte+"e6");ov.addColorStop(.45,TM.fuerte+"66");ov.addColorStop(1,TM.fuerte+"f0");x.fillStyle=ov;x.fillRect(0,0,W,H);}
+ else{
+ const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,TM.cielo1);g.addColorStop(.55,TM.cielo2);g.addColorStop(1,TM.cielo3);x.fillStyle=g;x.fillRect(0,0,W,H);
+ const gl=x.createRadialGradient(540,1180,20,540,1180,420);gl.addColorStop(0,"rgba(255,248,230,.95)");gl.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=gl;x.fillRect(0,700,W,900);
+ const ins=x.createLinearGradient(0,940,0,1400);ins.addColorStop(0,"#fffdf5");ins.addColorStop(1,"#f6e3b4");x.fillStyle=ins;x.fillRect(450,940,180,420);
+ x.fillStyle="#ffffff";x.strokeStyle="#c9d9de";x.lineWidth=3;x.beginPath();x.moveTo(450,940);x.lineTo(500,968);x.lineTo(500,1332);x.lineTo(450,1360);x.closePath();x.fill();x.stroke();
+ x.lineWidth=18;x.strokeStyle="#ffffff";x.strokeRect(440,930,200,440);
+ x.save();try{x.filter="blur(14px)"}catch(e){}x.fillStyle="#ffffff";
+ [[540,1400,380,70],[380,1360,170,90],[560,1340,190,100],[740,1380,160,75],[250,1420,150,50],[850,1420,150,50]].forEach(([cx,cy,rx,ry])=>{x.beginPath();x.ellipse(cx,cy,rx,ry,0,0,Math.PI*2);x.fill()});x.restore();}
+ x.fillStyle="#ffffff";x.textBaseline="alphabetic";
+ x.font="500 40px Inter, sans-serif";x.fillText((st.name?st.name+" · ":"")+TX.tarjeta,90,220);
+ x.font="400 128px Newsreader, Georgia, serif";let y=wrap(x,m.nombre,90,370,900,128);
+ x.font="500 40px Inter, sans-serif";x.fillText(TX.tarjeta2,90,y+40);
+ x.font="500 72px Newsreader, Georgia, serif";wrap(x,m.nace,90,y+130,900,80);
+ x.fillStyle=escImg?"rgba(255,255,255,.4)":"rgba(15,76,92,.35)";x.fillRect(90,1690,900,3);
+ x.fillStyle=escImg?"#ffffff":TM.fuerte;let fs=40;const site="Haz el test en "+C.sitio;
+ do{x.font=`600 ${fs}px Inter, sans-serif`;fs-=2}while(x.measureText(site).width>900&&fs>22);
+ x.fillText(site,90,1760);
+ x.font="400 36px Inter, sans-serif";x.fillText(B.titulo+" · "+B.autor,90,1815);
+ track("compartir",{nombre:st.name,res:m.nombre});
+ cv.toBlob(async blob=>{
+  if(!blob){toast.textContent="No se pudo crear la imagen. Toma captura de la tarjeta.";return}
+  const file=new File([blob],"mi-resultado.png",{type:"image/png"});
+  try{if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],text:share});toast.textContent="¡Gracias por compartir!";return}}catch(e){if(e&&e.name==="AbortError")return}
+  const url=URL.createObjectURL(blob);
+  try{const a=document.createElement("a");a.href=url;a.download="mi-resultado.png";document.body.appendChild(a);a.click();a.remove()}catch(e){}
+  out.innerHTML=`<img src="${url}" alt="Tu tarjeta para historias">`;
+  toast.textContent="Si no se descargó, mantén presionada la imagen para guardarla.";
+ },"image/png");
+}
+if(st.a.length===R.length&&st.i>=R.length)result();else intro();
+}
+</script>
+</body>
+</html>
